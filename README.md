@@ -56,6 +56,7 @@
 - **Context API** - Gerenciamento de estado
 
 ---
+<img width="1198" height="794" alt="Screenshot_1" src="https://github.com/user-attachments/assets/268fd13f-a233-440e-b314-e75e7473e744" />
 
 ## 📁 Estrutura do Projeto
 
