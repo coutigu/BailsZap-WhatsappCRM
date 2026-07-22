@@ -1,0 +1,88 @@
+generator client {
+  provider   = "prisma-client-js"
+  engineType = "library"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      String   @default("Agent") // Admin, Agent
+  tickets   Ticket[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Contact {
+  id            String   @id @default(uuid())
+  jid           String   @unique // ID do WhatsApp normalizado
+  name          String?
+  whatsappName  String?
+  profilePicUrl String?
+  email         String?
+  notes         String?
+  tickets       Ticket[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Ticket {
+  id        String    @id @default(uuid())
+  contactId String
+  contact   Contact   @relation(fields: [contactId], references: [id], onDelete: Cascade)
+  userId    String?
+  user      User?     @relation(fields: [userId], references: [id])
+  sectorId  String?
+  sector    Sector?   @relation(fields: [sectorId], references: [id])
+  status    String    @default("Em espera") // Em espera, Em atendimento, Finalizado
+  unreadCount Int     @default(0)
+  botRetries  Int     @default(0)
+  botSkipped  Boolean @default(false)
+  messages  Message[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Message {
+  id        String   @id @default(uuid())
+  ticketId  String
+  ticket    Ticket   @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  messageId String?  @unique // ID nativo da mensagem no WhatsApp
+  type      String   @default("text") // text, image, audio, document
+  content   String   // Texto ou URL da midia
+  mediaUrl  String?  // Caminho da midia
+  fileName  String?  // Nome original do arquivo (para documentos)
+  sender    String   // Cliente, Sistema
+  isDeleted Boolean  @default(false)
+  isEdited      Boolean  @default(false)
+  oldContent    String?
+  ack           Int      @default(0)
+  reaction      String?
+  quotedMsgId   String?
+  quotedMsgBody String?
+  timestamp     DateTime @default(now())
+}
+
+model Sector {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  message   String   // Mensagem enviada ao selecionar este setor
+  tickets   Ticket[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Setting {
+  id          String   @id @default(uuid())
+  key         String   @unique
+  value       String
+  description String?
+  updatedAt   DateTime @updatedAt
+}
+
