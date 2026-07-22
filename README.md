@@ -115,10 +115,10 @@ Abra o terminal e execute:
 
 ```bash
 # Clone o repositório
-git clone https://github.com/seu-usuario/beilayszap.git
+git clone https://github.com/coutigu/BailsZap-WhatsappCRM.git
 
 # Entre na pasta do projeto
-cd beilayszap
+cd BailsZap-WhatsappCRM
 ```
 *Ou baixe o arquivo ZIP e extraia na pasta desejada.*
 
