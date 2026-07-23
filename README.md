@@ -16,14 +16,13 @@
 
 ## 📖 Sobre o Sistema
 
-**BeilsZap** é uma plataforma completa de atendimento multiagentes para WhatsApp, projetada para equipes de suporte, vendas e relacionamento com clientes. Com uma interface moderna e intuitiva, permite gerenciar múltiplos números de WhatsApp, distribuir conversas entre agentes e acompanhar todo o histórico de atendimentos em tempo real.
+**BeilsZap** é uma plataforma completa de atendimento multiagentes para WhatsApp, projetada para equipes de suporte, vendas e relacionamento com clientes. Com uma interface moderna e intuitiva, permite gerenciar múltiplas conversas de WhatsApp, distribuir conversas entre agentes e acompanhar todo o histórico de atendimentos em tempo real.
 
 ---
 
 ## 🎯 Funcionalidades
 
 - ✅ **Multiagentes** - Gerencie vários atendentes na mesma plataforma
-- ✅ **Múltiplos números** - Conecte e gerencie vários números de WhatsApp
 - ✅ **Chat em tempo real** - Interface de conversação instantânea
 - ✅ **Histórico completo** - Registro de todas as conversas e interações
 - ✅ **Painel administrativo** - Controle total sobre usuários e permissões
